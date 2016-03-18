@@ -224,13 +224,16 @@ class TestSurvey1(BaseSurvey):
     @classmethod
     def get_survey(cls, data, device):
         questions = [
-            ('sleep-quality', Choice('How did you sleep?', (1, 2, 3, 4, 5))),
-            ('fine',          Bool('Are you fine?')),
-            ('asleep',        Time('When did you go to sleep?')),
-            ('woke-up',       Time('When did you wake up?')),
-            ('fine3',         Bool('Are you fine?')),
-            ('fine4',         Bool('Are you fine?')),
-            ('fine5',         Bool('Are you fine?')),
+            ('to-bed',        Time('At what time did you go to bed last night? (please use 24h format)')),
+            ('asleep',        Time('When did you approximately fall asleep? (please use 24h format)')),
+            ('sleep-disturbs',Choice('After falling asleep, about how many times. did you wake up during the night?', (0, 1, 2, 3, 4, 5, more than 5 times))),
+            ('woke-up-why',   Choice('If you woke up, what was the reason?', (Had to get up to use the bathroom, someone else woke me up (my child, pet, other...), had bad dreams, felt too cold/hot, coughing or snoring loudly, had pain, could not breath well, other))),
+            ('time-awake',    Time('If you woke up, for how long were you awake during the night in total? (hh:mm)'),
+            ('woke-up',       Time('At what time did you finally wake up? (please use 24h format)')),
+            ('get-up',        Time('At what time did you get up? (please use 24h format)')),
+            ('quality-sleep', Choice('How would you rate the quality of your sleep last night?', (1 - poor, 2, 3 - more or less, 4, 5 - excellent),
+            ('rested-night',  Choice('Did you feel yourself rested after the night?', (1 - no, I feel very tired!, 2, 3 - indifferent, 4, 5 - yes, I feel very rested!))),
+            ('sleep-alone',   Bool('Did you sleep alone?')),
         ]
         # Can do extra logic here
         survey_data = {'name': 'Test Survey 1',
