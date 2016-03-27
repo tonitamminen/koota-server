@@ -226,13 +226,17 @@ class TestSurvey1(BaseSurvey):
         questions = [
             ('to-bed',        Time('At what time did you go to bed last night? (please use 24h format)')),
             ('asleep',        Time('When did you approximately fall asleep? (please use 24h format)')),
-            ('sleep-disturbs',Choice('After falling asleep, about how many times. did you wake up during the night?', (0, 1, 2, 3, 4, 5, more than 5 times))),
-            ('woke-up-why',   Choice('If you woke up, what was the reason?', (Had to get up to use the bathroom, someone else woke me up (my child, pet, other...), had bad dreams, felt too cold/hot, coughing or snoring loudly, had pain, could not breath well, other))),
-            ('time-awake',    Time('If you woke up, for how long were you awake during the night in total? (hh:mm)'),
+            ('sleep-disturbs',Choice('After falling asleep, about how many times. did you wake up during the night?', ('0', '1', '2', '3', '4', '5', 'more than 5 times'))),
+            ('woke-up-why',   Choice('If you woke up, what was the reason?', ('Had to get up to use the bathroom', 'someone else woke me up (my child, pet, other...)', 'had bad dreams', 'felt too cold/hot', 'coughing or snoring loudly', 'had pain', 'could not breath well', 'other'))),
+            ('time-awake',    Integer('If you woke up, for how long were you awake during the night in total? (in minutes)'),
             ('woke-up',       Time('At what time did you finally wake up? (please use 24h format)')),
             ('get-up',        Time('At what time did you get up? (please use 24h format)')),
-            ('quality-sleep', Choice('How would you rate the quality of your sleep last night?', (1 - poor, 2, 3 - more or less, 4, 5 - excellent),
-            ('rested-night',  Choice('Did you feel yourself rested after the night?', (1 - no, I feel very tired!, 2, 3 - indifferent, 4, 5 - yes, I feel very rested!))),
+            ('waking-device'  Choice('Did you finally wake up naturally or were you woken up by something else (e.g. alarm)?', ('naturally', 'by something else'))),
+            ('nightmares'     Bool('Did you have nightmares?')),
+            ('last-dream'     Bool('Do you remember your last dream')),
+            ('length-eval'    Choice('Are you pleased with the length of the sleep?', ('1 - poor', '2', '3 - more or less', '4', '5 - excellent'))),
+            ('quality-sleep', Choice('How would you rate the quality (not quantity) of your sleep last night?', ('1 - poor', '2', '3 - more or less', '4', '5 - excellent'),
+            ('fatigued',      Choice('How fatigued do you feel yourself at the moment?', ('1 - I feel very fatigued', '2', '3 - indifferent', '4', '5 - not at all fatigued'))),
             ('sleep-alone',   Bool('Did you sleep alone?')),
         ]
         # Can do extra logic here
